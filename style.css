@@ -16,3 +16,23 @@ body {
     color: white;
     font-family: 'Poppins', sans-serif;
 }
+.tabla {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.cella {
+    width: 90px;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5rem;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.3s;
+}
