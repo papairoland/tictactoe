@@ -1,0 +1,18 @@
+:root {
+    --hatter-sotet: #1a1a2e;
+    --kartya-hatter: rgba(255, 255, 255, 0.08);
+    --kiemelt-kek: #4834d4;
+    --x-szine: #00d2ff;
+    --o-szine: #ff007f;
+}
+
+body {
+    background: radial-gradient(circle at center, #16213e 0%, #1a1a2e 100%);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
