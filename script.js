@@ -26,3 +26,31 @@ function kattintasACellara(esemeny) {
 
     ellenorizdAGyozelmet();
 }
+function ellenorizdAGyozelmet() {
+    var gyozelem = false;
+
+    for (var i = 0; i < nyeroKombinaciok.length; i++) {
+        var komb = nyeroKombinaciok[i];
+        var a = tablaAllapota[komb[0]];
+        var b = tablaAllapota[komb[1]];
+        var c = tablaAllapota[komb[2]];
+
+        if (a !== "" && a === b && a === c) {
+            gyozelem = true;
+            break;
+        }
+    }
+
+    if (gyozelem) {
+        tartAJatek = false;
+        pontok[kiJonEppen]++;
+        pontokMentese();
+        jatekVegeUzenet(kiJonEppen + " NYERT!");
+    } else if (!tablaAllapota.includes("")) {
+        jatekVegeUzenet("DÖNTETLEN!");
+        tartAJatek = false;
+    } else {
+        kiJonEppen = (kiJonEppen === "X") ? "O" : "X";
+        felirat.innerText = kiJonEppen + " jön!";
+    }
+}
