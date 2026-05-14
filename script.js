@@ -66,3 +66,13 @@ function mindentAlaphelyzetbe() {
         cellak[i].classList.remove('x', 'o');
     }
 }
+function pontokMentese() {
+    localStorage.setItem('amobaPontok', JSON.stringify(pontok));
+    document.getElementById('x-pontszam').innerText = pontok.X;
+    document.getElementById('o-pontszam').innerText = pontok.O;
+}
+
+function jatekVegeUzenet(szoveg) {
+    document.getElementById('gyoztes-uzenet-szoveg').innerText = szoveg;
+    eredmenyPanel.style.display = 'flex';
+}
