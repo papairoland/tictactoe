@@ -12,3 +12,17 @@ var nyeroKombinaciok = [
     [0, 3, 6], [1, 4, 7], [2, 5, 8],
     [0, 4, 8], [2, 4, 6]
 ];
+function kattintasACellara(esemeny) {
+    var cella = esemeny.target;
+    var index = cella.getAttribute('data-index');
+
+    if (tablaAllapota[index] !== "" || tartAJatek === false) {
+        return;
+    }
+
+    tablaAllapota[index] = kiJonEppen;
+    cella.innerText = kiJonEppen;
+    cella.classList.add(kiJonEppen.toLowerCase());
+
+    ellenorizdAGyozelmet();
+}
