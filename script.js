@@ -76,3 +76,12 @@ function jatekVegeUzenet(szoveg) {
     document.getElementById('gyoztes-uzenet-szoveg').innerText = szoveg;
     eredmenyPanel.style.display = 'flex';
 }
+window.onload = function() {
+    var mentettAdat = localStorage.getItem('amobaPontok');
+    if (mentettAdat) {
+        pontok = JSON.parse(mentettAdat);
+        document.getElementById('mentes-info').innerText = "Eddigi állás -> X: " + pontok.X + " | O: " + pontok.O;
+        inditoPanel.style.display = 'flex';
+    }
+    pontokMentese();
+};
