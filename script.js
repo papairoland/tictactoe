@@ -85,3 +85,22 @@ window.onload = function() {
     }
     pontokMentese();
 };
+for (var i = 0; i < cellak.length; i++) {
+    cellak[i].addEventListener('click', kattintasACellara);
+}
+
+document.getElementById('uj-jatek-gomb').onclick = mindentAlaphelyzetbe;
+document.getElementById('modalis-uj-meccs').onclick = mindentAlaphelyzetbe;
+document.getElementById('folytatas-gomb').onclick = function() { inditoPanel.style.display = 'none'; };
+document.getElementById('nullazas-gomb').onclick = function() {
+    pontok = { X: 0, O: 0 };
+    pontokMentese();
+    inditoPanel.style.display = 'none';
+};
+document.getElementById('modalis-kilepes').onclick = function() { window.location.href = "about:blank"; };
+document.getElementById('elozmenyek-torlese').onclick = function() {
+    if(confirm("Biztosan törlöd az összes eddigi pontot?")) {
+        pontok = { X: 0, O: 0 };
+        pontokMentese();
+    }
+};
