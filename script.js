@@ -54,3 +54,15 @@ function ellenorizdAGyozelmet() {
         felirat.innerText = kiJonEppen + " jön!";
     }
 }
+function mindentAlaphelyzetbe() {
+    kiJonEppen = "X";
+    tablaAllapota = ["", "", "", "", "", "", "", "", ""];
+    tartAJatek = true;
+    felirat.innerText = "X jön!";
+    eredmenyPanel.style.display = 'none';
+    
+    for (var i = 0; i < cellak.length; i++) {
+        cellak[i].innerText = "";
+        cellak[i].classList.remove('x', 'o');
+    }
+}
