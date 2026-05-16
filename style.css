@@ -1,78 +1,205 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Orbitron:wght@500;900&display=swap');
+
 :root {
     --hatter-sotet: #1a1a2e;
     --kartya-hatter: rgba(255, 255, 255, 0.08);
     --kiemelt-kek: #4834d4;
+    --kiemelt-feny: #686de0;
     --x-szine: #00d2ff;
     --o-szine: #ff007f;
+    --szurke-szoveg: #a29bfe;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
+    font-family: 'Poppins', sans-serif;
     background: radial-gradient(circle at center, #16213e 0%, #1a1a2e 100%);
     height: 100vh;
-    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
 }
+
+/* KONTÉNER ÉS CÍM */
+.tartaly {
+    background: var(--kartya-hatter);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 95%;
+    max-width: 450px;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 5px;
+    margin-bottom: 25px;
+    background: linear-gradient(to right, #fff, var(--szurke-szoveg));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* PONTSZÁMOK */
+.pontszam-tablazat {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+}
+
+.pontszam {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    border-radius: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+#x-pontszam { color: var(--x-szine); }
+#o-pontszam { color: var(--o-szine); }
+
+/* JÁTÉKTÁBLA */
 .tabla {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
-    margin: 20px 0;
+    margin-bottom: 25px;
 }
 
 .cella {
-    width: 90px;
-    height: 90px;
+    aspect-ratio: 1 / 1;
     background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 3.5rem;
+    font-weight: 900;
+    font-family: 'Orbitron', sans-serif;
     cursor: pointer;
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: 0.3s;
+    transition: all 0.2s ease;
 }
+
+.cella:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: scale(1.02);
+}
+
 .cella.x { color: var(--x-szine); text-shadow: 0 0 15px var(--x-szine); }
 .cella.o { color: var(--o-szine); text-shadow: 0 0 15px var(--o-szine); }
 
-.tartaly {
-    background: var(--kartya-hatter);
-    padding: 30px;
-    border-radius: 30px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.1);
+/* GOMBOK ÉS VEZÉRLŐK */
+.vezerlok {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#allapot-szoveg {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #f0932b;
+    margin-bottom: 10px;
+}
+
+.gomb-tartaly {
+    display: flex;
+    gap: 10px;
+    width: 100%;
 }
 
 button {
-    padding: 12px 20px;
-    border-radius: 10px;
-    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 14px 20px;
+    border-radius: 12px;
     cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+    flex: 1;
 }
 
-.gomb-elsodleges { background: var(--kiemelt-kek); color: white; }
-.gomb-masodlagos { background: transparent; color: #a29bfe; border: 1px solid #a29bfe; }
+.gomb-elsodleges {
+    background: linear-gradient(45deg, var(--kiemelt-kek), var(--kiemelt-feny));
+    color: white;
+    box-shadow: 0 4px 15px rgba(72, 52, 212, 0.4);
+}
 
+.gomb-elsodleges:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(72, 52, 212, 0.5);
+}
+
+.gomb-masodlagos {
+    background: transparent;
+    color: var(--szurke-szoveg);
+    border: 2px solid rgba(162, 155, 254, 0.3);
+}
+
+.gomb-masodlagos:hover {
+    background: rgba(162, 155, 254, 0.1);
+    border-color: var(--szurke-szoveg);
+}
+
+/* MODÁLIS ABLAK (OVERLAY) */
 .takaras {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85);
-    display: flex; justify-content: center; align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 25, 0.9);
     backdrop-filter: blur(10px);
-    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 .modalis-ablak {
-    background: var(--hatter-sotet);
-    padding: 40px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    padding: 3.5rem;
     border-radius: 30px;
-    text-align: center;
     border: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+    animation: modalPop 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes modalPop {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modalis-ablak h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: white;
+    text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+.modalis-gombok {
+    display: flex;
+    gap: 15px;
+}
+
+.modalis-ablak p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--szurke-szoveg);
 }
